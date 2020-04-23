@@ -44,12 +44,12 @@ matrix:
     - make -R -C .build/projects/gmake-linux config=release64 CXX="g++-5" CC="gcc-5" shaderc
     - strip .build/linux64_gcc/bin/libbgfx-shared-libRelease.so
     - "git log --first-parent --pretty=format:%H HEAD~2..HEAD~1 > libbgfx.so.git"
-    - "aws s3 cp .build/linux64_gcc/bin/libbgfx-shared-libRelease.so s3://build.lwjgl.org/nightly/linux/x64/libbgfx.so $S3_PARAMS"
-    - "aws s3 cp libbgfx.so.git s3://build.lwjgl.org/nightly/linux/x64/ $S3_PARAMS"
-    - "aws s3 cp .build/linux64_gcc/bin/geometrycRelease s3://build.lwjgl.org/nightly/linux/x64/bgfx-tools/geometryc $S3_PARAMS"
-    - "aws s3 cp .build/linux64_gcc/bin/texturecRelease s3://build.lwjgl.org/nightly/linux/x64/bgfx-tools/texturec $S3_PARAMS"
-    - "aws s3 cp .build/linux64_gcc/bin/texturevRelease s3://build.lwjgl.org/nightly/linux/x64/bgfx-tools/texturev $S3_PARAMS"
-    - "aws s3 cp .build/linux64_gcc/bin/shadercRelease s3://build.lwjgl.org/nightly/linux/x64/bgfx-tools/shaderc $S3_PARAMS"
+    #- "aws s3 cp .build/linux64_gcc/bin/libbgfx-shared-libRelease.so s3://build.lwjgl.org/nightly/linux/x64/libbgfx.so $S3_PARAMS"
+    #- "aws s3 cp libbgfx.so.git s3://build.lwjgl.org/nightly/linux/x64/ $S3_PARAMS"
+    #- "aws s3 cp .build/linux64_gcc/bin/geometrycRelease s3://build.lwjgl.org/nightly/linux/x64/bgfx-tools/geometryc $S3_PARAMS"
+    #- "aws s3 cp .build/linux64_gcc/bin/texturecRelease s3://build.lwjgl.org/nightly/linux/x64/bgfx-tools/texturec $S3_PARAMS"
+    #- "aws s3 cp .build/linux64_gcc/bin/texturevRelease s3://build.lwjgl.org/nightly/linux/x64/bgfx-tools/texturev $S3_PARAMS"
+    #- "aws s3 cp .build/linux64_gcc/bin/shadercRelease s3://build.lwjgl.org/nightly/linux/x64/bgfx-tools/shaderc $S3_PARAMS"
 
   # -----------------
   - name: "Linux arm32"
@@ -87,8 +87,8 @@ matrix:
     - make -R -C .build/projects/gmake-linux-arm-gcc config=release CXX="arm-linux-gnueabihf-g++-5" CC="arm-linux-gnueabihf-gcc-5" CFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0" bgfx-shared-lib
     - arm-linux-gnueabihf-strip .build/linux32_arm_gcc/bin/libbgfx-shared-libRelease.so
     - "git log --first-parent --pretty=format:%H HEAD~2..HEAD~1 > libbgfx.so.git"
-    - "aws s3 cp .build/linux32_arm_gcc/bin/libbgfx-shared-libRelease.so s3://build.lwjgl.org/nightly/linux/arm32/libbgfx.so $S3_PARAMS"
-    - "aws s3 cp libbgfx.so.git s3://build.lwjgl.org/nightly/linux/arm32/ $S3_PARAMS"
+    #- "aws s3 cp .build/linux32_arm_gcc/bin/libbgfx-shared-libRelease.so s3://build.lwjgl.org/nightly/linux/arm32/libbgfx.so $S3_PARAMS"
+    #- "aws s3 cp libbgfx.so.git s3://build.lwjgl.org/nightly/linux/arm32/ $S3_PARAMS"
 
   # -----------------
   - name: "Linux arm64"
@@ -136,8 +136,8 @@ matrix:
     - make -R -C .build/projects/gmake-linux-arm-gcc config=release64 CXX="aarch64-linux-gnu-g++-5" CC="aarch64-linux-gnu-gcc-5" CFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0" bgfx-shared-lib
     - aarch64-linux-gnu-strip .build/linux64_arm_gcc/bin/libbgfx-shared-libRelease.so
     - "git log --first-parent --pretty=format:%H HEAD~2..HEAD~1 > libbgfx.so.git"
-    - "aws s3 cp .build/linux64_arm_gcc/bin/libbgfx-shared-libRelease.so s3://build.lwjgl.org/nightly/linux/arm64/libbgfx.so $S3_PARAMS"
-    - "aws s3 cp libbgfx.so.git s3://build.lwjgl.org/nightly/linux/arm64/ $S3_PARAMS"
+    #- "aws s3 cp .build/linux64_arm_gcc/bin/libbgfx-shared-libRelease.so s3://build.lwjgl.org/nightly/linux/arm64/libbgfx.so $S3_PARAMS"
+    #- "aws s3 cp libbgfx.so.git s3://build.lwjgl.org/nightly/linux/arm64/ $S3_PARAMS"
 
   # -----------------
   - name: "Linux mips64"
@@ -183,8 +183,8 @@ matrix:
     - make -R -C .build/projects/gmake-linux-mips-gcc config=release64 CXX="mips64el-linux-gnuabi64-g++-5" CC="mips64el-linux-gnuabi64-gcc-5" CFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0" bgfx-shared-lib
     - mips64el-linux-gnuabi64-strip .build/linux64_mips_gcc/bin/libbgfx-shared-libRelease.so
     - "git log --first-parent --pretty=format:%H HEAD~2..HEAD~1 > libbgfx.so.git"
-    - "aws s3 cp .build/linux64_mips_gcc/bin/libbgfx-shared-libRelease.so s3://build.lwjgl.org/nightly/linux/mips64/libbgfx.so $S3_PARAMS"
-    - "aws s3 cp libbgfx.so.git s3://build.lwjgl.org/nightly/linux/mips64/ $S3_PARAMS"
+    #- "aws s3 cp .build/linux64_mips_gcc/bin/libbgfx-shared-libRelease.so s3://build.lwjgl.org/nightly/linux/mips64/libbgfx.so $S3_PARAMS"
+    #- "aws s3 cp libbgfx.so.git s3://build.lwjgl.org/nightly/linux/mips64/ $S3_PARAMS"
 
   # -----------------
   - name: "Linux ppc64le"
@@ -232,8 +232,8 @@ matrix:
     - make -R -C .build/projects/gmake-linux-ppc-gcc config=release64 CXX="powerpc64le-linux-gnu-g++-5" CC="powerpc64le-linux-gnu-gcc-5" CFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0" bgfx-shared-lib
     - powerpc64le-linux-gnu-strip .build/linux64_ppc_gcc/bin/libbgfx-shared-libRelease.so
     - "git log --first-parent --pretty=format:%H HEAD~2..HEAD~1 > libbgfx.so.git"
-    - "aws s3 cp .build/linux64_ppc_gcc/bin/libbgfx-shared-libRelease.so s3://build.lwjgl.org/nightly/linux/ppc64le/libbgfx.so $S3_PARAMS"
-    - "aws s3 cp libbgfx.so.git s3://build.lwjgl.org/nightly/linux/ppc64le/ $S3_PARAMS"
+    #- "aws s3 cp .build/linux64_ppc_gcc/bin/libbgfx-shared-libRelease.so s3://build.lwjgl.org/nightly/linux/ppc64le/libbgfx.so $S3_PARAMS"
+    #- "aws s3 cp libbgfx.so.git s3://build.lwjgl.org/nightly/linux/ppc64le/ $S3_PARAMS"
 
   # -----------------
   - name: "macOS"
@@ -268,9 +268,9 @@ matrix:
     - make -C .build/projects/gmake-osx config=release64 shaderc
     - strip -u -r .build/osx64_clang/bin/libbgfx-shared-libRelease.dylib
     - "git log --first-parent --pretty=format:%H HEAD~2..HEAD~1 > libbgfx.dylib.git"
-    - "aws s3 cp .build/osx64_clang/bin/libbgfx-shared-libRelease.dylib s3://build.lwjgl.org/nightly/macosx/x64/libbgfx.dylib $S3_PARAMS"
-    - "aws s3 cp libbgfx.dylib.git s3://build.lwjgl.org/nightly/macosx/x64/ --acl public-read --cache-control \"public, must-revalidate, proxy-revalidate, max-age=0\""
-    - "aws s3 cp .build/osx64_clang/bin/geometrycRelease s3://build.lwjgl.org/nightly/macosx/x64/bgfx-tools/geometryc $S3_PARAMS"
-    - "aws s3 cp .build/osx64_clang/bin/texturecRelease s3://build.lwjgl.org/nightly/macosx/x64/bgfx-tools/texturec $S3_PARAMS"
-    - "aws s3 cp .build/osx64_clang/bin/texturevRelease s3://build.lwjgl.org/nightly/macosx/x64/bgfx-tools/texturev $S3_PARAMS"
-    - "aws s3 cp .build/osx64_clang/bin/shadercRelease s3://build.lwjgl.org/nightly/macosx/x64/bgfx-tools/shaderc $S3_PARAMS"
+    #- "aws s3 cp .build/osx64_clang/bin/libbgfx-shared-libRelease.dylib s3://build.lwjgl.org/nightly/macosx/x64/libbgfx.dylib $S3_PARAMS"
+    #- "aws s3 cp libbgfx.dylib.git s3://build.lwjgl.org/nightly/macosx/x64/ --acl public-read --cache-control \"public, must-revalidate, proxy-revalidate, max-age=0\""
+    #- "aws s3 cp .build/osx64_clang/bin/geometrycRelease s3://build.lwjgl.org/nightly/macosx/x64/bgfx-tools/geometryc $S3_PARAMS"
+    #- "aws s3 cp .build/osx64_clang/bin/texturecRelease s3://build.lwjgl.org/nightly/macosx/x64/bgfx-tools/texturec $S3_PARAMS"
+    #- "aws s3 cp .build/osx64_clang/bin/texturevRelease s3://build.lwjgl.org/nightly/macosx/x64/bgfx-tools/texturev $S3_PARAMS"
+    #- "aws s3 cp .build/osx64_clang/bin/shadercRelease s3://build.lwjgl.org/nightly/macosx/x64/bgfx-tools/shaderc $S3_PARAMS"
