@@ -34,6 +34,7 @@ matrix:
     - pip install --user awscli
     - export PATH=$PATH:$HOME/.local/bin
     - sudo ln -s /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1 /usr/lib/libGL.so
+    - openssl aes-256-cbc -K $encrypted_3b8cb6da0fbe_key -iv $encrypted_3b8cb6da0fbe_iv -in .travis/id_rsa_deploy_travis.enc -out .travis/id_rsa_deploy_travis -d
 
     script:
     - ../bx/tools/bin/linux/genie --with-shared-lib --with-tools --gcc=linux-gcc gmake
@@ -80,6 +81,7 @@ matrix:
     - sudo apt-get update || true
     - sudo apt-get -yq --no-install-suggests --no-install-recommends install libgl1-mesa-dev:armhf x11proto-core-dev:armhf libx11-dev:armhf -o Dpkg::Options::="--force-overwrite"
     - sudo ln -s /usr/lib/arm-linux-gnueabihf/mesa/libGL.so.1 /usr/lib/libGL.so
+    - openssl aes-256-cbc -K $encrypted_3b8cb6da0fbe_key -iv $encrypted_3b8cb6da0fbe_iv -in .travis/id_rsa_deploy_travis.enc -out .travis/id_rsa_deploy_travis -d
 
     script:
     - sed -i 's/strip -s/arm-linux-gnueabihf-strip/' ../bx/scripts/toolchain.lua
@@ -119,6 +121,7 @@ matrix:
     - sudo apt-get update || true
     - sudo apt-get -yq --no-install-suggests --no-install-recommends install libgl1-mesa-dev:arm64 x11proto-core-dev:arm64 libx11-dev:arm64 -o Dpkg::Options::="--force-overwrite"
     - sudo ln -s /usr/lib/aarch64-linux-gnu/mesa/libGL.so.1 /usr/lib/libGL.so
+    - openssl aes-256-cbc -K $encrypted_3b8cb6da0fbe_key -iv $encrypted_3b8cb6da0fbe_iv -in .travis/id_rsa_deploy_travis.enc -out .travis/id_rsa_deploy_travis -d
 
     script:
     - sed -i 's/strip -s/aarch64-linux-gnu-strip/' ../bx/scripts/toolchain.lua
@@ -166,6 +169,7 @@ matrix:
     - sudo apt-get update || true
     - sudo apt-get -yq -f --allow-unauthenticated --no-install-suggests --no-install-recommends install libgl1-mesa-dev:mips64el x11proto-core-dev:mips64el libx11-dev:mips64el mesa-common-dev:mips64el libgl1-mesa-glx:mips64el libdrm-dev:mips64el libdrm2:mips64el libdrm-radeon1:mips64el libdrm-nouveau2:mips64el libdrm-amdgpu1:mips64el libglapi-mesa:mips64el -o Dpkg::Options::="--force-overwrite"
     - sudo ln -s /usr/lib/mips64el-linux-gnuabi64/mesa/libGL.so.1 /usr/lib/libGL.so
+    - openssl aes-256-cbc -K $encrypted_3b8cb6da0fbe_key -iv $encrypted_3b8cb6da0fbe_iv -in .travis/id_rsa_deploy_travis.enc -out .travis/id_rsa_deploy_travis -d
 
     script:
     - sed -i 's/strip -s/mips64el-linux-gnuabi64-strip/' ../bx/scripts/toolchain.lua
@@ -215,6 +219,7 @@ matrix:
     - sudo apt-get update || true
     - sudo apt-get -yq --no-install-suggests --no-install-recommends install libgl1-mesa-dev:ppc64el x11proto-core-dev:ppc64el libx11-dev:ppc64el -o Dpkg::Options::="--force-overwrite"
     - sudo ln -s /usr/lib/powerpc64le-linux-gnu/mesa/libGL.so.1 /usr/lib/libGL.so
+    - openssl aes-256-cbc -K $encrypted_3b8cb6da0fbe_key -iv $encrypted_3b8cb6da0fbe_iv -in .travis/id_rsa_deploy_travis.enc -out .travis/id_rsa_deploy_travis -d
 
     script:
     - sed -i 's/strip -s/powerpc64le-linux-gnu-strip/' ../bx/scripts/toolchain.lua
@@ -248,6 +253,7 @@ matrix:
 
     before_install:
     - brew update
+    - openssl aes-256-cbc -K $encrypted_3b8cb6da0fbe_key -iv $encrypted_3b8cb6da0fbe_iv -in .travis/id_rsa_deploy_travis.enc -out .travis/id_rsa_deploy_travis -d
 
     install:
     #- brew unlink python
