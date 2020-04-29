@@ -222,6 +222,9 @@ matrix:
     - openssl aes-256-cbc -K $encrypted_3b8cb6da0fbe_key -iv $encrypted_3b8cb6da0fbe_iv -in .travis/id_rsa_deploy_travis.enc -out .travis/id_rsa_deploy_travis -d
 
     script:
+    - eval "$(ssh-agent -s)"
+    - chmod 600 .travis/id_rsa_deploy_travis
+    - ssh-add .travis/id_rsa_deploy_travis
     - sed -i 's/strip -s/powerpc64le-linux-gnu-strip/' ../bx/scripts/toolchain.lua
     - ../bx/tools/bin/linux/genie --with-shared-lib --gcc=linux-ppc-gcc gmake
     - sed -i 's/ -m64//' .build/projects/gmake-linux-ppc-gcc/bgfx.make
@@ -239,6 +242,19 @@ matrix:
     - "git log --first-parent --pretty=format:%H HEAD~2..HEAD~1 > libbgfx.so.git"
     #- "aws s3 cp .build/linux64_ppc_gcc/bin/libbgfx-shared-libRelease.so s3://build.lwjgl.org/nightly/linux/ppc64le/libbgfx.so $S3_PARAMS"
     #- "aws s3 cp libbgfx.so.git s3://build.lwjgl.org/nightly/linux/ppc64le/ $S3_PARAMS"
+    - mkdir -p deploy
+    - cp .build/linux64_ppc_gcc/bin/libbgfx-shared-libRelease.so deploy/libbgfx.so
+    - cp libbgfx.so.git deploy/
+    - cd deploy
+    - git init
+    - git remote add origin git@github.com:EMue/lwjgl3-bin.git
+    - git fetch origin 0449e44c07e2bdf09e79f21c75a92f7d94b0e496
+    - git checkout 0449e44c07e2bdf09e79f21c75a92f7d94b0e496
+    - git branch ppc64le_nightly_bgfx
+    - git checkout ppc64le_nightly_bgfx
+    - git add libbgfx.so libbgfx.so.git
+    - git commit -m "Deploy bgfx from Travis CI."
+    - git push --force origin ppc64le_nightly_bgfx
 
   # -----------------
   - name: "macOS"
